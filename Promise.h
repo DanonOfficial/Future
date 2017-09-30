@@ -7,7 +7,7 @@
 #include "Future.h"
 #include "SharedState.h"
 template<typename T>
-struct Promise<T &> {
+struct Promise {
 public:
     Promise() : data(new ShareState<T>), futureAlreadyGetted(false) {};
 
@@ -15,7 +15,7 @@ public:
 
     Promise(Promise<T> &&past) : data(std::move(past.data)), futureAlreadyGetted(false) {};
 
-    Future<T &> GetFuture();
+    Future<T> GetFuture();
 
     void Set(const T &dataToSet);
 
