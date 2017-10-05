@@ -47,15 +47,12 @@ void Future<T &>::Wait() {
 
 template<typename T>
 T &Future<T &>::Get() {
-    //std::clog << "kek1\n";
     Wait();
     auto temp = std::move(data);//data == nullptr after it
-    //std::clog << "kek2\n";
     if (temp->exception_ptr) {
         std::rethrow_exception(temp->exception_ptr);
     }
     static T res = *temp->value;
-    //std::clog << "kek2\n";
     return res;
 }
 
