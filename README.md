@@ -1,2 +1,2 @@
 # Future
-Short std::Future template realisation
+std::Future template realisation
